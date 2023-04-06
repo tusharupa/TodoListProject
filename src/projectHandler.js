@@ -2,7 +2,7 @@ import { project,projectMaster} from "./project"
 import { showTask } from "./taskHandler";
 
 const createProject = () =>{
-    const projectId=projectMaster.read().length;
+    const projectId=projectMaster.projectList.length;
     const projectName=document.querySelector('#projectname').value;
     const newProject=project(projectId,projectName);
     
