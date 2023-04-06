@@ -78,7 +78,7 @@ const listenProjectClicks = () => {
         
         if(e.target.classList.contains('deleteProject'))
         {
-            projectMaster.remove(e.target.closest('.projectDiv').dataset.projectIndex);
+            projectMaster.projectList.splice(e.target.closest('.projectDiv').dataset.projectIndex,1);
            
             localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList)); //update myProjectList after deletion
             showProjects();

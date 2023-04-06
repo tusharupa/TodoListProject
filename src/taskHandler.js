@@ -99,7 +99,7 @@ if(projectID == -1)
     });
 }
 else{
-    if(projectMaster.projectList[projectID].length == 0)
+    if(projectMaster.projectList[projectID].taskList.length == 0)          //projectMaster.projectList[projectID].length == 0
     {
         content.textContent="No tasks to show";
         
@@ -207,6 +207,7 @@ let projectID = findCurrentProjectID();
 taskContent.addEventListener('click',(e)=>{
     if(e.target.classList.contains('deleteTaskBtn'))
     {
+        projectID = findCurrentProjectID();
         if(projectID == -1)
         {
             projectMaster.defaultProject.splice(e.target.closest('.todoTask').dataset.taskIndex,1);
@@ -215,6 +216,7 @@ taskContent.addEventListener('click',(e)=>{
         }
         else
         {
+            
             projectMaster.projectList[projectID].taskList.splice(e.target.closest('.todoTask').dataset.taskIndex,1);
             
             localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
