@@ -2,10 +2,18 @@ import { project,projectMaster} from "./project"
 import { displayTasks } from "./taskHandler";
 
 const createProject = () =>{
-    const projectId=projectMaster.projectList.length;
+    let projectId;
     const projectName=document.querySelector('#projectname').value;
+
+    if(projectMaster.projectList)
+    {
+        projectId=projectMaster.projectList.length;
+    }
+    else
+    {
+        projectId=0
+    }
     const newProject=project(projectId,projectName);
-    
     projectMaster.projectList.push(newProject);  //save projectList to local storage
     
     localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
