@@ -8,7 +8,7 @@ const project = (id,title) =>{
 
 const projectMaster = (()=>{
 
-    let projectList=JSON.parse(localStorage.getItem("myProjectList"));
+    let projectList=JSON.parse(localStorage.getItem("myProjectList")) || [];
     let defaultProject = JSON.parse(localStorage.getItem('myDefaultProject')) || [];
     
     const push = (project) => projectList.push(project);
