@@ -1,5 +1,5 @@
 import { project,projectMaster} from "./project"
-import { showTask } from "./taskHandler";
+import { displayTasks } from "./taskHandler";
 
 const createProject = () =>{
     const projectId=projectMaster.projectList.length;
@@ -10,10 +10,10 @@ const createProject = () =>{
     
     localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
     showProjects();
-    showTask();
+    displayTasks();
 }
 const showProjects =()=>{
-
+    document.querySelector('.projectLabel').textContent="Tasks not under any Project!";
     const projectArea=document.querySelector('.projects');
     projectArea.innerHTML="";
     projectMaster.projectList.forEach((project,index)=>{
@@ -82,7 +82,7 @@ const listenProjectClicks = () => {
            
             localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList)); //update myProjectList after deletion
             showProjects();
-            showTask();
+            displayTasks();
         }
         else if(e.target.classList.contains('editProject'))
         {   
@@ -121,7 +121,7 @@ const listenProjectClicks = () => {
                 previousProject.classList.remove('selectedProject');
                 currentProject.classList.add('selectedProject');
                 previousProject=currentProject;
-               showTask();
+               displayTasks();
                
             }
             else if(currentProject === previousProject)
@@ -132,7 +132,7 @@ const listenProjectClicks = () => {
             {
                 currentProject.classList.add('selectedProject');
                 previousProject=currentProject;
-               showTask();
+               displayTasks();
                
             }
             projectLabel.textContent=currentProject.dataset.project;
@@ -148,7 +148,7 @@ const listenProjectClicks = () => {
         projectMaster.projectList[projectID].title = newProjectTitle;
         localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
         showProjects();
-        showTask();
+        displayTasks();
     }
     
     export{ initializeProjectEvents,listenProjectClicks,showProjects }

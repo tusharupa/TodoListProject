@@ -1,7 +1,6 @@
 import { addDays, format , isEqual, isWithinInterval, parseISO} from "date-fns";
 import {project, projectMaster} from "./project";
-import { showTask } from "./taskHandler";
-import {showProjects,listenProjectClicks} from "./projectHandler";
+
 
 function displayToday(){
     document.querySelector('.projectLabel').textContent="Tasks to be completed by Today !";
@@ -248,4 +247,4 @@ function projects(){
           projectArea.append(div);
       });
 }
-export {domEventListeners}
+export {domEventListeners,addTask}
