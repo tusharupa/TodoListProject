@@ -10,7 +10,7 @@ const createTask = () => {
     const taskDate = processDateData(dateData);
     if(projectID == -1)
     {
-        if(projectMaster.defaultProject.length)
+        if(projectMaster.defaultProject.length > 0)
         {
             taskID = projectMaster.defaultProject.length;
         const newTask = task(taskID,taskName,taskDate,projectID);
@@ -27,7 +27,7 @@ const createTask = () => {
     }
     else
     {
-        if(projectMaster.projectList[projectID].taskList.length)
+        if(projectMaster.projectList[projectID].taskList.length > 0)
         {
             taskID = projectMaster.projectList[projectID].taskList.length;
             const newTask = task(taskID,taskName,taskDate,projectID);
