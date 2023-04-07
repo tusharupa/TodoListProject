@@ -1,5 +1,6 @@
-# todo-list Project [Live Demo](https://tusharupa.github.io/TodoListProject/) 
+# todo-list Project 
 
+## :point_right:[Live Demo](https://tusharupa.github.io/TodoListProject/) :point_left:
 
 **Javascript project from TheODINprojects curriculumn**
 
