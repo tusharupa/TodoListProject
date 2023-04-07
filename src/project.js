@@ -1,6 +1,6 @@
 
 const project = (id,title) =>{
-    const taskList = [];
+    let taskList = [];
     return {
         id,title,taskList
      };
@@ -13,20 +13,7 @@ const projectMaster = (()=>{
     
     const push = (project) => projectList.push(project);
     const read =()=> projectList;
-    // const findProject =(id) =>{
-    //     const idNum= Number(id);
-    //     return projectList.find((project)=>project.id === idNum);
-    // };
-    // const remove = (id) => {
-    //     const idNum = Number(id);
-    //         projectList.splice(idNum,1);
-        
-    //     };
-        // const editProject = (id,title) =>{
-        //     const idNum = Number(id);
-        //     const thisProject = projectList.find((project)=>project.id===idNum);
-        //     thisProject.title=title;
-        // }
+    
         return {
             push,read,projectList,defaultProject
         };

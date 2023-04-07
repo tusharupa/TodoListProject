@@ -81,7 +81,7 @@ const clearInputs = () => {
 }
 const findCurrentProjectID = () => {
     const selectedProject = document.querySelector('.selectedProject');
-    if(selectedProject == null)
+    if(!(selectedProject))
     {
         return -1;
     }

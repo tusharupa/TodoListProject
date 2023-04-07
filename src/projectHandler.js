@@ -11,7 +11,7 @@ const createProject = () =>{
     }
     else
     {
-        projectId=0
+        projectId=0;
     }
     const newProject=project(projectId,projectName);
     projectMaster.projectList.push(newProject);  //save projectList to local storage
