@@ -135,7 +135,7 @@ function addTask(taskId,taskName,taskDate,taskProjectId,taskComplete,taskPriorit
     div.classList.add('todoTask');
     div.setAttribute('data-task-index',taskId);
     div.setAttribute('data-task',taskName);
-    // element.id=index; 
+    
     const para = document.createElement('p');
     para.textContent= taskName;
     para.classList.add('taskText');

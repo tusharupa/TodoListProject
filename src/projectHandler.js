@@ -16,7 +16,7 @@ const createProject = () =>{
     const newProject=project(projectId,projectName);
     projectMaster.projectList.push(newProject);  //save projectList to local storage
     
-    // localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
+    localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
     showProjects();
     displayTasks();
 }
@@ -88,7 +88,7 @@ const listenProjectClicks = () => {
         {
             projectMaster.projectList.splice(e.target.closest('.projectDiv').dataset.projectIndex,1);
            
-            // localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList)); //update myProjectList after deletion
+            localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList)); //update myProjectList after deletion
             showProjects();
             displayTasks();
         }
@@ -154,7 +154,7 @@ const listenProjectClicks = () => {
     function createEditProject(projectID){
         const newProjectTitle = document.querySelector('#editProjectTitle').value;
         projectMaster.projectList[projectID].title = newProjectTitle;
-        // localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
+        localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
         showProjects();
         displayTasks();
     }
