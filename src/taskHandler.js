@@ -182,7 +182,7 @@ function displayTasks(){
     let projectID = findCurrentProjectID();
     if(projectID == -1)
     {
-        console.log(projectMaster.defaultProject);
+        
         if(projectMaster.defaultProject.length > 0)
         {
         projectMaster.defaultProject.forEach((task,index) => {
@@ -195,7 +195,7 @@ function displayTasks(){
     }
     else
     {
-        console.log(projectMaster.projectList);
+        
         if(projectMaster.projectList.length > 0 && projectMaster.projectList[projectID].taskList.length > 0)
         {
         projectMaster.projectList[projectID].taskList.forEach((task,index) => {
