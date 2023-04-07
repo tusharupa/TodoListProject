@@ -23,7 +23,7 @@ const createTask = () => {
             projectMaster.defaultProject.push(newTask);
         
         }
-        localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject)); //save defaultProject to local storage
+        // localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject)); //save defaultProject to local storage
     }
     else
     {
@@ -40,7 +40,7 @@ const createTask = () => {
             projectMaster.projectList[projectID].taskList.push(newTask);
         }
     
-    localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList)); //save projectList to local storage
+    // localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList)); //save projectList to local storage
     }
     displayTasks();
 };
@@ -99,14 +99,14 @@ taskContent.addEventListener('click',(e)=>{
         {
             projectMaster.defaultProject.splice(e.target.closest('.todoTask').dataset.taskIndex,1);
             
-            localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject)); //update defaultProject after deletion
+            // localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject)); //update defaultProject after deletion
         }
         else
         {
             
             projectMaster.projectList[projectID].taskList.splice(e.target.closest('.todoTask').dataset.taskIndex,1);
             
-            localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
+            // localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
             
         }
         displayTasks();
@@ -119,13 +119,13 @@ taskContent.addEventListener('click',(e)=>{
         {
             projectMaster.defaultProject[e.target.closest('.todoTask').dataset.taskIndex].completed = !(projectMaster.defaultProject[e.target.closest('.todoTask').dataset.taskIndex].completed);
             
-            localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject));
+            // localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject));
         }
         else
         { 
             
             projectMaster.projectList[projectID].taskList[e.target.closest('.todoTask').dataset.taskIndex].completed = !(projectMaster.projectList[projectID].taskList[e.target.closest('.todoTask').dataset.taskIndex].completed);
-            localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
+            // localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
         }
         displayTasks();
     }
@@ -135,12 +135,12 @@ taskContent.addEventListener('click',(e)=>{
         if(projectID == -1)
         {
             projectMaster.defaultProject[e.target.closest('.todoTask').dataset.taskIndex].priority = !(projectMaster.defaultProject[e.target.closest('.todoTask').dataset.taskIndex].priority);
-            localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject));
+            // localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject));
         }
         else
         {
             projectMaster.projectList[projectID].taskList[e.target.closest('.todoTask').dataset.taskIndex].priority = !(projectMaster.projectList[projectID].taskList[e.target.closest('.todoTask').dataset.taskIndex].priority);
-            localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
+            // localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
         }
         displayTasks();
     }
@@ -182,9 +182,11 @@ function displayTasks(){
     let projectID = findCurrentProjectID();
     if(projectID == -1)
     {
-        if(projectMaster.defaultProject.length)
+        console.log(projectMaster.defaultProject);
+        if(projectMaster.defaultProject.length > 0)
         {
-        projectMaster.defaultProject.forEach(task => {
+        projectMaster.defaultProject.forEach((task,index) => {
+            task.id = index;
             addTask(task.id,task.name,task.date,task.projectID,task.completed,task.priority);
         });
     }
@@ -193,9 +195,11 @@ function displayTasks(){
     }
     else
     {
+        console.log(projectMaster.projectList);
         if(projectMaster.projectList.length > 0 && projectMaster.projectList[projectID].taskList.length > 0)
         {
-        projectMaster.projectList[projectID].taskList.forEach(task => {
+        projectMaster.projectList[projectID].taskList.forEach((task,index) => {
+            task.id = index;
             addTask(task.id,task.name,task.date,task.projectID,task.completed,task.priority);
         });
     }
@@ -217,12 +221,12 @@ function createEditTask(projectID,taskID)
     {
         projectMaster.defaultProject[taskID].name=editTaskTitle;
         projectMaster.defaultProject[taskID].date=editTaskDuedate;
-        localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject));
+        // localStorage.setItem('myDefaultProject',JSON.stringify(projectMaster.defaultProject));
     }
     else {
         projectMaster.projectList[projectID].taskList[taskID].name=editTaskTitle;
         projectMaster.projectList[projectID].taskList[taskID].date=editTaskDuedate;
-        localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
+        // localStorage.setItem('myProjectList',JSON.stringify(projectMaster.projectList));
     }
     displayTasks();
 }

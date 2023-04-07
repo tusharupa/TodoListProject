@@ -1,5 +1,6 @@
 import { addDays, format , isEqual, isWithinInterval, parseISO} from "date-fns";
 import {project, projectMaster} from "./project";
+import { listenTaskClicks } from "./taskHandler";
 
 
 function displayToday(){
@@ -57,14 +58,16 @@ function importantTasks(){
 content.textContent="";
 
 projectMaster.projectList.forEach(project => {
-    project.taskList.forEach(task => {
+    project.taskList.forEach((task,index) => {
+        task.id=index;
         if(task.priority)
         addTask(task.id,task.name,task.date,task.projectID,task.completed,task.priority);
         else
         return;
     });
 });
-projectMaster.defaultProject.forEach(task => {
+projectMaster.defaultProject.forEach((task,index) => {
+    task.id = index;
     if(task.priority)
         addTask(task.id,task.name,task.date,task.projectID,task.completed,task.priority);
         else

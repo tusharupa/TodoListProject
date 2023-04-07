@@ -3,8 +3,10 @@ import { projectMaster} from "./project";
 const task = (id,name,date,projectID) => {
     let completed=false;
     let priority = false;
+    const toggleComplete =() =>completed=!completed ;
+    const togglePriority =() => priority = !priority;
     return{
-       id,name,date,projectID,completed,priority
+       id,name,date,projectID,completed,priority,toggleComplete,togglePriority
     };
 }
 const taskMaster = (()=>{
